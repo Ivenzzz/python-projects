@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mini Web Crawler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-xl">
+        <h1 class="text-2xl font-bold mb-4 text-center">Mini Web Crawler</h1>
+
+        <form method="post" class="flex gap-2 mb-4">
+            <input type="text" name="url" placeholder="Enter a URL"
+                class="flex-1 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
+            <button type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Crawl</button>
+        </form>
+
+        {% if links %}
+        <h2 class="text-lg font-semibold mb-2">Found Links:</h2>
+        <ul class="list-disc pl-5 space-y-1">
+            {% for link in links %}
+            <li>
+                <a href="{{ link }}" target="_blank"
+                    class="text-blue-600 hover:underline break-words inline-block w-full">
+                    {{ link }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>
